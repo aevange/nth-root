@@ -1,5 +1,5 @@
-angular.module('roots.directives', ['roots.services'])
-  .directive('angles', ['d3Service', 'input', 'sol', function(d3Service, input, sol) {
+// angular.module('roots.directives', [/*'roots.services'*/])
+  /*.directive('angles', ['d3Service', 'input', 'sol', function(d3Service, input, sol) {
     return {
       restrict: 'EA',
       scope: {
@@ -7,6 +7,7 @@ angular.module('roots.directives', ['roots.services'])
       },
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
+          // console.log(element);
 
           var svg = d3.select(element[0])
           // var svg = d3.select('.angles')
@@ -14,23 +15,43 @@ angular.module('roots.directives', ['roots.services'])
               .attr("width", 300)
               .attr("height", 300);
 
+
+          // // Browser onresize event
+          // /window.onresize = function() {
+          //   scope.$apply();
+          // };
+
+          // // Watch for resize event
+          // scope.$watch(function() {
+          //   return angular.element(window)[0].innerWidth;
+          // }, function() {
+          //   scope.render(scope.data);
+          // });
+
           scope.$watch('data', function(newVals, oldVals) {
+            // console.log('newvals', newVals);
+            // console.log('old', oldVals);
             return scope.render(newVals);
           }, true);
 
           scope.render = function(data) {
             // remove all previous items before render
-            svg.selectAll('*').remove();
+            // svg.selectAll('*').remove();
 
             // If we don't pass any data, return out of the element
             if (!data) return;
 
     
             var arc = d3.svg.arc()
+                // .innerRadius(30)
                 .innerRadius(0)
                 .outerRadius(120)
                 .startAngle(89 * (Math.PI/180))
                 .endAngle(-269 * (Math.PI/180));
+                // .startAngle(120 * (Math.PI/180))
+                // .endAngle(240 * (Math.PI/180));
+                // .startAngle(0)
+                // .endAngle(2*Math.PI);
 
             var plot = svg
                 .append("g")
@@ -70,4 +91,4 @@ angular.module('roots.directives', ['roots.services'])
         });
       }
     };
-  }]);
+  }]);*/
