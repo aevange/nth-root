@@ -11,8 +11,6 @@ angular.module('roots.directives', ['roots.services'])
           var margin = parseInt(attrs.margin) || 20,
           barHeight = parseInt(attrs.barHeight) || 20,
           barPadding = parseInt(attrs.barPadding) || 5;
-          console.log(element);
-
 
           var svg = d3.select(element[0])
             .append('svg')
@@ -38,7 +36,6 @@ angular.module('roots.directives', ['roots.services'])
           scope.render = function(data) {
             // remove all previous items before render
             svg.selectAll('*').remove();
-
             // If we don't pass any data, return out of the element
             if (!data) return;
 
@@ -85,14 +82,32 @@ angular.module('roots.directives', ['roots.services'])
       },
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
+          //graph width
+          var SIZE = 300
+          // console.log(element);
 
           var svg = d3.select(element[0])
           // var svg = d3.select('.angles')
             .append('svg')
-              .attr("width", 300)
-              .attr("height", 300);
+              .attr("width", SIZE)
+              .attr("height", SIZE);
+
+
+          // // Browser onresize event
+          // /window.onresize = function() {
+          //   scope.$apply();
+          // };
+
+          // // Watch for resize event
+          // scope.$watch(function() {
+          //   return angular.element(window)[0].innerWidth;
+          // }, function() {
+          //   scope.render(scope.data);
+          // });
 
           scope.$watch('data', function(newVals, oldVals) {
+            // console.log('newvals', newVals);
+            // console.log('old', oldVals);
             return scope.render(newVals);
           }, true);
 
@@ -105,10 +120,15 @@ angular.module('roots.directives', ['roots.services'])
 
     
             var arc = d3.svg.arc()
+                // .innerRadius(30)
                 .innerRadius(0)
                 .outerRadius(120)
                 .startAngle(89 * (Math.PI/180))
                 .endAngle(-269 * (Math.PI/180));
+                // .startAngle(120 * (Math.PI/180))
+                // .endAngle(240 * (Math.PI/180));
+                // .startAngle(0)
+                // .endAngle(2*Math.PI);
 
             var plot = svg
                 .append("g")
@@ -119,7 +139,7 @@ angular.module('roots.directives', ['roots.services'])
                 .attr("d", arc)
                 .attr("class", "gauge")
                 .style("fill", "#ddd")
-                .attr("transform", "translate(150,130) ")
+                .attr("transform", "translate(" + SIZE/2 + "," + SIZE/2 + ") ")
                 // .attr("transform", "translate(150,130) rotate(180)")
                 .on("click", turnNeedle);
 
@@ -129,9 +149,10 @@ angular.module('roots.directives', ['roots.services'])
                 .attr("transform", "translate( 0 , 0 )")
                 .append("path")
                 .attr("class", "tri")
-                .attr("d", "M" + (300/2 + 3) + " " + (120 + 10) + " L" + 300/2 + " 0 L" + (300/2 - 3) + " " + (120 + 10) + " C" + (300/2 - 3) + " " + (120 + 20) + " " + (300/2 + 3) + " " + (120 + 20) + " " + (300/2 + 3) + " " + (120 + 10) + " Z")
+                // .attr("d", "M" + (300/2 - 3) + " " + (120 + 10) + " L" + 300/2 + " 0 L" + (300/2 - 3) + " " + (120 + 10) + " C" + (300/2 - 3) + " " + (120 + 20) + " " + (300/2 + 3) + " " + (120 + 20) + " " + (300/2 + 3) + " " + (120 + 10) + " Z")
+                .attr("d", "M" + (SIZE/2 - 3) + " " + SIZE/2 + " L" + SIZE/2 + " " + (SIZE/2 -3) + " L" + SIZE*7/8 + " " + SIZE/2 + " L" + SIZE/2 + " " + (SIZE/2 +3) + " Z")
                 .attr("transform", function(d,i) {
-                  return "rotate(" + (d.start*180/Math.PI+90) +", " + 300/2 + "," + (120 + 10) + ")";
+                  return "rotate(" + (d.start*180/Math.PI) +", " + SIZE/2 + "," + SIZE/2 + ")";
                 });
 
             function turnNeedle(){
@@ -140,7 +161,7 @@ angular.module('roots.directives', ['roots.services'])
                     .duration(2000)
                     .attrTween("transform", tween);
                 function tween(d, i, a) {
-                  return d3.interpolateString("rotate("+(d.start*180/Math.PI+90)  +", 150, 130)", "rotate("+ (-d.phi*180/Math.PI+90) + ", 150, 130)");
+                  return d3.interpolateString("rotate("+(d.start*180/Math.PI)  +", " + SIZE/2 + ", " + SIZE/2 + ")", "rotate("+ (d.phi*180/Math.PI) + ", " + SIZE/2 + ", " + SIZE/2 + ")");
                 }
             };
           };
