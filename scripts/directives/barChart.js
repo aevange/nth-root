@@ -14,7 +14,8 @@ angular.module('roots.directives', ['roots.services'])
 
           var svg = d3.select(element[0])
             .append('svg')
-            .style('width', '90%');
+            .style('width', '90%')
+            .style('height', 50);
 
           // Browser onresize event
           /*window.onresize = function() {
@@ -84,7 +85,6 @@ angular.module('roots.directives', ['roots.services'])
         d3Service.d3().then(function(d3) {
           //graph width
           var SIZE = 300
-          // console.log(element);
 
           var svg = d3.select(element[0])
           // var svg = d3.select('.angles')
@@ -92,22 +92,7 @@ angular.module('roots.directives', ['roots.services'])
               .attr("width", SIZE)
               .attr("height", SIZE);
 
-
-          // // Browser onresize event
-          // /window.onresize = function() {
-          //   scope.$apply();
-          // };
-
-          // // Watch for resize event
-          // scope.$watch(function() {
-          //   return angular.element(window)[0].innerWidth;
-          // }, function() {
-          //   scope.render(scope.data);
-          // });
-
           scope.$watch('data', function(newVals, oldVals) {
-            // console.log('newvals', newVals);
-            // console.log('old', oldVals);
             return scope.render(newVals);
           }, true);
 
@@ -125,10 +110,6 @@ angular.module('roots.directives', ['roots.services'])
                 .outerRadius(120)
                 .startAngle(89 * (Math.PI/180))
                 .endAngle(-269 * (Math.PI/180));
-                // .startAngle(120 * (Math.PI/180))
-                // .endAngle(240 * (Math.PI/180));
-                // .startAngle(0)
-                // .endAngle(2*Math.PI);
 
             var plot = svg
                 .append("g")
@@ -149,7 +130,6 @@ angular.module('roots.directives', ['roots.services'])
                 .attr("transform", "translate( 0 , 0 )")
                 .append("path")
                 .attr("class", "tri")
-                // .attr("d", "M" + (300/2 - 3) + " " + (120 + 10) + " L" + 300/2 + " 0 L" + (300/2 - 3) + " " + (120 + 10) + " C" + (300/2 - 3) + " " + (120 + 20) + " " + (300/2 + 3) + " " + (120 + 20) + " " + (300/2 + 3) + " " + (120 + 10) + " Z")
                 .attr("d", "M" + (SIZE/2 - 3) + " " + SIZE/2 + " L" + SIZE/2 + " " + (SIZE/2 -3) + " L" + SIZE*7/8 + " " + SIZE/2 + " L" + SIZE/2 + " " + (SIZE/2 +3) + " Z")
                 .attr("transform", function(d,i) {
                   return "rotate(" + (d.start*180/Math.PI) +", " + SIZE/2 + "," + SIZE/2 + ")";
