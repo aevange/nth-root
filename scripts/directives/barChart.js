@@ -14,11 +14,12 @@ angular.module('roots.directives', ['roots.services'])
 
           var svg = d3.select(element[0])
             .append('svg')
+            .style('class', 'bar-graph')
             .style('width', '90%')
             .style('height', 50);
 
           // Browser onresize event
-          /*window.onresize = function() {
+          window.onresize = function() {
             scope.$apply();
           };
 
@@ -27,7 +28,7 @@ angular.module('roots.directives', ['roots.services'])
             return angular.element(window)[0].innerWidth;
           }, function() {
             scope.render(scope.data);
-          });*/
+          });
 
           scope.$watch('data', function(newVals, oldVals) {
 
@@ -62,7 +63,7 @@ angular.module('roots.directives', ['roots.services'])
                 .append('rect')
                 .attr('height', barHeight)
                 .attr('width', 140)
-                .attr('x', Math.round(margin/2))
+                .attr('x', 0)
                 .attr('y', function(d,i) {
                   return i * (barHeight + barPadding);
                 })
@@ -87,8 +88,8 @@ angular.module('roots.directives', ['roots.services'])
           var SIZE = 300
 
           var svg = d3.select(element[0])
-          // var svg = d3.select('.angles')
             .append('svg')
+              .style("class", 'complex-graph')
               .attr("width", SIZE)
               .attr("height", SIZE);
 
@@ -105,7 +106,6 @@ angular.module('roots.directives', ['roots.services'])
 
     
             var arc = d3.svg.arc()
-                // .innerRadius(30)
                 .innerRadius(0)
                 .outerRadius(120)
                 .startAngle(89 * (Math.PI/180))
@@ -113,15 +113,14 @@ angular.module('roots.directives', ['roots.services'])
 
             var plot = svg
                 .append("g")
-                .attr("class", "arc");
+                .attr("class", "plot");
 
             var gauge = plot
                 .append("path")
                 .attr("d", arc)
-                .attr("class", "gauge")
-                .style("fill", "#ddd")
+                .attr("class", "unit-circle")
+                .style("fill", "#770000")
                 .attr("transform", "translate(" + SIZE/2 + "," + SIZE/2 + ") ")
-                // .attr("transform", "translate(150,130) rotate(180)")
                 .on("click", turnNeedle);
 
             var needle = svg.selectAll("g").data(data).enter()

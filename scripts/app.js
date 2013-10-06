@@ -20,6 +20,7 @@ app.controller('MainCtrl', ['$scope', 'input', 'sol', function($scope, input, so
     $scope.magnitude.push({name: 'root', len: rMag});
 
     var phi1 = Math.atan2(-input.i, input.r);
+    //to avoid having to make over a full rotation we need to start with a positive
     if(phi1 < 0){
       phi1 += 2*Math.PI;
     }

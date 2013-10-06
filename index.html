@@ -1,45 +1,38 @@
 <!doctype html>
 <html ng-app='roots'>
   <head>
-    
-    <style type="text/css">
-      svg
-        {
-            margin-left: 30px;
-            margin-top: 30px;
-            border: 1px solid #ccc;
-        }
-    </style>
+    <link rel="stylesheet" href="./style/main.css">
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
   </head>
   <body>
     <div>
         <h1> nth roots </h1>
         <div ng-controller='MainCtrl'>
           <form>
-            <div>
+            <div class='entry'>
               <label for='real'>Enter the real part of your number: </label>
               <input type='number' name='real' ng-model='realPart'>
             </div>
-            <div>
+            <div class='entry'>
               <label for='imaginary'>Enter the imaginary part of your number: </label>
               <input type='number' name='imaginary' ng-model='imaginaryPart'>
             </div>
-            <div>
+            <div class='entry'>
               <label for='degree'>Enter the degree of your roots: </label>
               <input type='number' name='degree' ng-model='nthDegree'>
             </div>
-            <button ng-click='calculate()'>Submit</button>
+            <button class="btn btn-small btn-primary" ng-click='calculate()'>Submit</button>
           </form>
 
-        <div class='real'>real: {{realPart}}</div>
+        <!-- <div class='real'>real: {{realPart}}</div>
         <div class='imagine'>imaginary: {{imaginaryPart}}</div>
-        <div class='degree'>nth-degree: {{nthDegree}}</div>
-        <div>
-          <span>
+        <div class='degree'>nth-degree: {{nthDegree}}</div> -->
+        <!-- <div> -->
+         <!--  <span>
             <h3>Polar Coordinates</h3>
             <div>modulus of original (r): {{polar.r}} </div>
             <div>phi: {{polar.phi}}</div>
-          </span>
+          </span> -->
           <!-- <span>
             <h3>roots</h3>
             <div>modulus of root (r): {{rootR}}</div>
@@ -51,21 +44,21 @@
               </li>
             </ul>
           </span> -->
-        </div>
+        <!-- </div> -->
       <h3>Magnitude of root</h3>
       <div bar-chart data='magnitude' bar-height="20" bar-padding="5" id='bar'></div>
       <h3>Angles</h3>
       <p>Click to rotate</p>
       <div angles data='solutions' class='angles'></div>
     </div>
-        </div>
+  </div>
 
   </body>
   <footer>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
     <script src='scripts/app.js'></script>
     <script src='scripts/services/services.js'></script>
     <script src='scripts/directives/barChart.js'></script>
-    <!-- <script src='scripts/directives/angles.js'></script> -->
   </footer>
 </html>
