@@ -1,4 +1,4 @@
-var app = angular.module('roots', ['roots.services', 'roots.directives']);
+var app = angular.module('roots', ['roots.services', 'roots.directives.angles', 'roots.directives.barChart']);
 
 app.controller('MainCtrl', ['$scope', 'input', 'sol', function($scope, input, sol) {
 
@@ -30,11 +30,11 @@ app.controller('MainCtrl', ['$scope', 'input', 'sol', function($scope, input, so
 
       var phi = rad/input.d;
 
-      var solu = {
+      var solution = {
           'start': phi1,
           'phi': phi
         }
-      results.push(solu);
+      results.push(solution);
     }
     $scope.solutions = results;
     sol.utions = $scope.solutions;
