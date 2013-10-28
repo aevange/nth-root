@@ -1,0 +1,25 @@
+{
+  "name": "nth-root",
+  "description": "visualizer for calculating nth-roots of complex number",
+  "version": "0.0.1",
+  "homepage": "https://github.com/aevange/nth-root",
+  "author": {
+    "name": "Andre Evangelesta",
+    "url": "https://github.com/aevange"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aevange/nth-root.git"
+  },
+  "keywords": [
+    "AngularJS",
+    "D3",
+    "math"
+  ],
+  "bugs": {
+    "url": "https://github.com/aevange/nth-root/issues"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.1"
+  }
+}
