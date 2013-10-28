@@ -1,4 +1,4 @@
-angular.module('roots.directives.angles', ['roots.services'])
+angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'])
   .directive('angles', ['d3Service', 'input', 'sol', function(d3Service, input, sol) {
     return {
       restrict: 'EA',
