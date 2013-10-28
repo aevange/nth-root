@@ -1,11 +1,7 @@
-/*@import url("//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css");*/
-
 svg {
   margin-left: 30px;
   margin-top: 30px;
-  border: 1px solid #ccc;
-}
+  border: 1px solid #cccccc; }
 
-.entry > label{
-  display: inline;
-}
+.entry label {
+  display: inline; }
