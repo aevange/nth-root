@@ -40,7 +40,7 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
                 .style("fill", "#770000")
                 .on("click", turnNeedle);
 
-            var realVertex = graph
+            var realAxis = graph
                 .append("line")
                 .attr("x1", 0)
                 .attr("y1", SIZE/2)
@@ -49,7 +49,7 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
                 .attr("stroke", "black")
                 .attr("stroke-width", 1);
 
-            var imaginaryVertex = graph
+            var imaginaryAxis = graph
                 .append("line")
                 .attr("x1", SIZE/2)
                 .attr("y1", 0)
