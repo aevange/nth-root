@@ -8,7 +8,7 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
       link: function(scope, element, attrs) {
         d3Service.d3().then(function(d3) {
           //graph width
-          var SIZE = 300
+          var SIZE = 300;
 
           var svg = d3.select(element[0])
             .append('svg')
@@ -27,23 +27,36 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
             // If we don't pass any data, return out of the element
             if (!data) return;
 
-            var arc = d3.svg.arc()
-                .innerRadius(0)
-                .outerRadius(120)
-                .startAngle(89 * (Math.PI/180))
-                .endAngle(-269 * (Math.PI/180));
-
-            var plot = svg
+            var graph = svg
                 .append("g")
-                .attr("class", "plot");
+                .attr("class", "graph");
 
-            var gauge = plot
-                .append("path")
-                .attr("d", arc)
+            var unitCircle = graph
+                .append("circle")
                 .attr("class", "unit-circle")
+                .attr("cx", SIZE/2)
+                .attr("cy", SIZE/2)
+                .attr("r", SIZE*4/10)
                 .style("fill", "#770000")
-                .attr("transform", "translate(" + SIZE/2 + "," + SIZE/2 + ") ")
                 .on("click", turnNeedle);
+
+            var realVertex = graph
+                .append("line")
+                .attr("x1", 0)
+                .attr("y1", SIZE/2)
+                .attr("x2", SIZE)
+                .attr("y2", SIZE/2)
+                .attr("stroke", "black")
+                .attr("stroke-width", 1);
+
+            var imaginaryVertex = graph
+                .append("line")
+                .attr("x1", SIZE/2)
+                .attr("y1", 0)
+                .attr("x2", SIZE/2)
+                .attr("y2", SIZE)
+                .attr("stroke", "black")
+                .attr("stroke-width", 1);
 
             var needle = svg.selectAll("g").data(data).enter()
                 .append("g")
