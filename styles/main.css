@@ -5,8 +5,8 @@ body {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 button {
-  background-color: #006dcc;
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-color: #55778e;
+  background-image: linear-gradient(to bottom, #73a1c0, #56788f);
   background-repeat: repeat-x;
   color: white;
   padding: 2px 10px;
@@ -16,7 +16,7 @@ button {
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
   border-radius: 3px;
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
+  border-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); }
 
 input {
   background-color: #ffffff;
@@ -42,7 +42,5 @@ input {
 label {
   display: inline; }
 
-svg {
-  margin-left: 30px;
-  margin-top: 30px;
-  border: 1px solid #cccccc; }
+.angles svg {
+  margin: 30px 102px; }

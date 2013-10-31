@@ -16,8 +16,8 @@ body {
 }
 
 button {
-  background-color: #006dcc;
-  background-image: linear-gradient(to bottom, #0088cc, #0044cc);
+  background-color: rgb(85,119,142);
+  background-image: linear-gradient(to bottom, rgb(115,161,192), rgb(86,120,143));
   background-repeat: repeat-x;
   color: white;
   padding: 2px 10px;
@@ -25,7 +25,7 @@ button {
 
   @include border-radius(3px);
 
-  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.7) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
 
 }
 
@@ -52,9 +52,8 @@ label {
   display: inline;
 }
 
-svg {
-  margin-left: 30px;
-  margin-top: 30px;
-  border: 1px solid $greyBorderColor;
+.angles {
+  svg {
+    margin: 30px 102px;
+  }
 }
-
