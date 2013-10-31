@@ -38,6 +38,8 @@ input {
   transition: border linear .2s, box-shadow linear .2s;
 
   display: inline-block;
+  right: 0px;
+  position: absolute;
   height: 20px;
   padding: 4px 6px;
   margin-bottom: 10px;
@@ -49,11 +51,17 @@ input {
 }
 
 label {
-  display: inline;
+  display: inline-block;
+  left: 0;
 }
 
 .angles {
   svg {
     margin: 30px 102px;
   }
+}
+
+.entry {
+  position: relative;
+  height: 40px;
 }
