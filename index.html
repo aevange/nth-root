@@ -1,11 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html ng-app='roots'>
   <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=640" />
+
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="stylesheet" href="stylesheets/core.css" media="screen"/>
+    <link rel="stylesheet" href="stylesheets/mobile.css" media="handheld, only screen and (max-device-width:640px)"/>
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-45326833-1', 'aevange.github.io');
+      ga('send', 'pageview');
+
+    </script>
+
+    <script type="text/javascript" src="javascripts/modernizr.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="javascripts/headsmart.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function () {
+        $('#main_content').headsmart()
+      })
+    </script>
+    <title>Nth-root by aevange</title>
   </head>
+
   <body>
-    <div>
-        <h1> nth roots </h1>
+    <a id="forkme_banner" href="https://github.com/aevange/nth-root">View on GitHub</a>
+    <div class="shell">
+
+      <header>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <h1>Nth-root</h1>
+            <h2>Visualizer for determining n-th roots of complex numbers; using D3 and angular</h2>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+      </header>
+
+      <section id="downloads">
+        <span class="inner">
+          <a href="https://github.com/aevange/nth-root/zipball/master" class="zip"><em>download</em> .ZIP</a><a href="https://github.com/aevange/nth-root/tarball/master" class="tgz"><em>download</em> .TGZ</a>
+        </span>
+      </section>
+
+
+      <span class="banner-fix"></span>
+
+
+      <section id="main_content">
+
         <div ng-controller='MainCtrl'>
           <form>
             <div class='entry'>
@@ -22,38 +75,29 @@
             </div>
             <button class="btn btn-small btn-primary" ng-click='calculate()'>Submit</button>
           </form>
+          <h3>Magnitude of root</h3>
+          <p>Shows ratio of original input length and roots' length</p>
+          <div bar-chart data='magnitude' bar-height="20" bar-padding="5" id='bar'></div>
+          <h3>Angles</h3>
+          <p>Click circle to rotate rays</p>
+          <div angles data='solutions' class='angles'></div>
+        </div>
+      </section>
 
-        <!-- <div class='real'>real: {{realPart}}</div>
-        <div class='imagine'>imaginary: {{imaginaryPart}}</div>
-        <div class='degree'>nth-degree: {{nthDegree}}</div> -->
-        <!-- <div> -->
-         <!--  <span>
-            <h3>Polar Coordinates</h3>
-            <div>modulus of original (r): {{polar.r}} </div>
-            <div>phi: {{polar.phi}}</div>
-          </span> -->
-          <!-- <span>
-            <h3>roots</h3>
-            <div>modulus of root (r): {{rootR}}</div>
-            <ul>
-              <li ng-repeat='sol in solutions'>
-                <div>root {{sol.root}}</div>
-                <div>phi: {{sol.phi}}</div>
+      <footer>
+        <span class="ribbon-outer">
+          <span class="ribbon-inner">
+            <p>this project by <a href="https://github.com/aevange">aevange</a> can be found on <a href="https://github.com/aevange/nth-root">GitHub</a></p>
+          </span>
+          <span class="left-tail"></span>
+          <span class="right-tail"></span>
+        </span>
+        <p>Generated with <a href="http://pages.github.com">GitHub Pages</a> using Merlot</p>
+        <span class="octocat"></span>
+      </footer>
 
-              </li>
-            </ul>
-          </span> -->
-        <!-- </div> -->
-      <h3>Magnitude of root</h3>
-      <div bar-chart data='magnitude' bar-height="20" bar-padding="5" id='bar'></div>
-      <h3>Angles</h3>
-      <p>Click circle to rotate rays</p>
-      <div angles data='solutions' class='angles'></div>
     </div>
-  </div>
 
-  </body>
-  <footer>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.1/angular.min.js"></script>
     <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
     <script src='scripts/app.js'></script>
@@ -61,5 +105,6 @@
     <script src='scripts/controllers/MainCtrl.js'></script>
     <script src='scripts/directives/angles.js'></script>
     <script src='scripts/directives/barChart.js'></script>
-  </footer>
+
+  </body>
 </html>
