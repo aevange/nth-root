@@ -37,7 +37,7 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
                 .attr("cx", SIZE/2)
                 .attr("cy", SIZE/2)
                 .attr("r", SIZE*4/10)
-                .style("fill", "#770000")
+                .style("fill", "rgb(124,51,79)")
                 .on("click", turnNeedle);
 
             var realAxis = graph
@@ -46,7 +46,7 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
                 .attr("y1", SIZE/2)
                 .attr("x2", SIZE)
                 .attr("y2", SIZE/2)
-                .attr("stroke", "black")
+                .attr("stroke", "rgb(205,89,107)")
                 .attr("stroke-width", 1);
 
             var imaginaryAxis = graph
@@ -55,7 +55,7 @@ angular.module('roots.directives.angles', ['roots.services', 'roots.controllers'
                 .attr("y1", 0)
                 .attr("x2", SIZE/2)
                 .attr("y2", SIZE)
-                .attr("stroke", "black")
+                .attr("stroke", "rgb(205,89,107)")
                 .attr("stroke-width", 1);
 
             var needle = svg.selectAll("g").data(data).enter()

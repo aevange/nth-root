@@ -15,8 +15,8 @@ angular.module('roots.directives.barChart', ['roots.services'])
           var svg = d3.select(element[0])
             .append('svg')
             .style('class', 'bar-graph')
-            .style('width', '90%')
-            .style('height', 50);
+            .style('width', '96%')
+            .style('height', 45);
 
           // Browser onresize event
           window.onresize = function() {
@@ -67,7 +67,7 @@ angular.module('roots.directives.barChart', ['roots.services'])
                 .attr('y', function(d,i) {
                   return i * (barHeight + barPadding);
                 })
-                .attr('fill', function(d) { return color(d.len); })
+                .attr('fill', function(d,i) { return i === 0 ? 'rgb(91,127,152)': 'rgb(131,183,218)'; })
                 .transition()
                   .duration(1000)
                   .attr('width', function(d) {
